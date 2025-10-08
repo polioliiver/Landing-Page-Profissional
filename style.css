@@ -1,0 +1,479 @@
+/* Importação de fonte do Google Fonts (opcional, mas recomendado para design moderno) */
+@import url('https://fonts.googleapis.com/css2?family=Montserrat:wght@300;400;600;700&family=Roboto:wght@300;400;700&display=swap');
+
+/* Variáveis CSS para cores e fontes */
+:root {
+    --primary-color: #007bff; /* Azul vibrante */
+    --secondary-color: #6c757d; /* Cinza */
+    --dark-bg: #1a1a2e; /* Fundo escuro geral */
+    --light-bg: #ffffff; /* Fundo claro para seções */
+    --gray-bg: #f8f9fa; /* Fundo cinza claro para seções secundárias */
+    --text-color-dark: #e0e0e0; /* Texto em fundo escuro */
+    --text-color-light: #333; /* Texto em fundo claro */
+    --font-primary: 'Montserrat', sans-serif;
+    --font-secondary: 'Roboto', sans-serif;
+    --border-radius: 8px;
+    --box-shadow: 0 4px 12px rgba(0, 0, 0, 0.1);
+}
+
+/* Estilos Globais */
+* {
+    margin: 0;
+    padding: 0;
+    box-sizing: border-box;
+}
+
+body {
+    font-family: var(--font-secondary);
+    line-height: 1.6;
+    color: var(--text-color-light);
+    background-color: var(--light-bg);
+}
+
+.container {
+    max-width: 1200px;
+    margin: 0 auto;
+    padding: 20px;
+}
+
+h1, h2, h3, h4 {
+    font-family: var(--font-primary);
+    color: var(--text-color-dark); /* Por padrão, para a primeira dobra */
+    margin-bottom: 15px;
+}
+
+h3 {
+    font-size: 2.2em;
+    text-align: center;
+    margin-bottom: 40px;
+    position: relative;
+    color: var(--text-color-light); /* Para seções claras */
+}
+
+h3::after {
+    content: '';
+    position: absolute;
+    left: 50%;
+    bottom: -10px;
+    transform: translateX(-50%);
+    width: 60px;
+    height: 3px;
+    background-color: var(--primary-color);
+    border-radius: 2px;
+}
+
+a {
+    text-decoration: none;
+    color: var(--primary-color);
+}
+
+/* Botões */
+.btn {
+    display: inline-block;
+    padding: 12px 25px;
+    border-radius: var(--border-radius);
+    font-family: var(--font-primary);
+    font-weight: 600;
+    transition: all 0.3s ease;
+    text-align: center;
+    cursor: pointer;
+    border: none;
+}
+
+.btn-primary {
+    background-color: var(--primary-color);
+    color: #fff;
+}
+
+.btn-primary:hover {
+    background-color: #0056b3;
+    transform: translateY(-2px);
+}
+
+.btn-secondary {
+    background-color: transparent;
+    color: var(--primary-color);
+    border: 2px solid var(--primary-color);
+}
+
+.btn-secondary:hover {
+    background-color: var(--primary-color);
+    color: #fff;
+    transform: translateY(-2px);
+}
+
+.btn-large {
+    padding: 15px 35px;
+    font-size: 1.1em;
+}
+
+.btn-icon {
+    display: inline-flex;
+    align-items: center;
+    gap: 8px;
+    padding: 8px 15px;
+    font-size: 0.9em;
+}
+
+/* Seções */
+.section {
+    padding: 80px 0;
+}
+
+.section:nth-of-type(even) { /* Seções alternadas para background */
+    background-color: var(--gray-bg);
+}
+.section:nth-of-type(odd) {
+    background-color: var(--light-bg);
+}
+.section.about-me h3,
+.section.skills h3,
+.section.projects h3,
+.section.contact h3 {
+    color: var(--text-color-light); /* Garante que o h3 seja escuro nessas seções */
+}
+
+/* REVISÃO: Centralizando a seção "Quem Sou Eu?" */
+.about-me .container {
+    text-align: center;
+}
+
+/* Primeira Dobra (Hero) */
+.hero {
+    background-color: var(--dark-bg);
+    color: var(--text-color-dark);
+    text-align: center;
+    padding: 100px 20px;
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    align-items: center;
+    min-height: 100vh; /* Ocupa a altura total da viewport */
+    position: relative;
+    overflow: hidden; /* Para esconder o código de fundo, se for animado */
+}
+
+/* Efeito de código no fundo (exemplo simples com gradiente, pode ser mais complexo com JS) */
+.hero::before {
+    content: '';
+    position: absolute;
+    top: 0;
+    left: 0;
+    width: 100%;
+    height: 100%;
+    background: linear-gradient(45deg, rgba(26,26,46,0.9), rgba(0,0,0,0.7)),
+        url('https://www.transparenttextures.com/patterns/dark-fish-skin.png'); /* Exemplo de textura */
+    background-size: cover;
+    z-index: 0;
+}
+
+.hero-content {
+    position: relative;
+    z-index: 1;
+    max-width: 800px;
+}
+
+.hero-title {
+    font-size: 4em;
+    margin-bottom: 10px;
+    line-height: 1;
+}
+
+.hero-subtitle {
+    font-size: 1.8em;
+    font-weight: 400;
+    margin-bottom: 25px;
+    color: var(--primary-color);
+}
+
+.hero-description {
+    font-size: 1.1em;
+    margin-bottom: 30px;
+    max-width: 600px;
+    margin-left: auto;
+    margin-right: auto;
+}
+
+.profile-photo {
+    width: 180px;
+    height: 180px;
+    border-radius: 50%;
+    object-fit: cover;
+    border: 5px solid var(--primary-color);
+    margin: 30px auto;
+    display: block;
+    box-shadow: var(--box-shadow);
+}
+
+.hero-ctas {
+    display: flex;
+    gap: 20px;
+    justify-content: center;
+    margin-bottom: 30px;
+    flex-wrap: wrap; /* Para responsividade */
+}
+
+.social-links {
+    margin-top: 20px;
+    font-size: 1.8em;
+}
+
+.social-links a {
+    color: var(--text-color-dark);
+    margin: 0 10px;
+    transition: color 0.3s ease;
+}
+
+.social-links a:hover {
+    color: var(--primary-color);
+}
+
+/* Minhas Habilidades */
+.skills-grid {
+    display: grid;
+    grid-template-columns: repeat(auto-fit, minmax(120px, 1fr));
+    gap: 30px;
+    text-align: center;
+    max-width: 900px;
+    margin: 0 auto;
+}
+
+.skill-item {
+    background-color: var(--light-bg);
+    padding: 25px 15px;
+    border-radius: var(--border-radius);
+    box-shadow: var(--box-shadow);
+    transition: transform 0.3s ease;
+    border: 1px solid #eee;
+}
+
+.skill-item:hover {
+    transform: translateY(-5px);
+    box-shadow: 0 6px 16px rgba(0, 0, 0, 0.15);
+}
+
+.skill-item i {
+    font-size: 3em;
+    color: var(--primary-color);
+    margin-bottom: 10px;
+}
+
+.skill-item span {
+    display: block;
+    font-weight: 600;
+    color: var(--text-color-light);
+}
+
+/* Projetos Destacados */
+.projects-grid {
+    display: grid;
+    grid-template-columns: repeat(auto-fit, minmax(300px, 1fr));
+    gap: 30px;
+}
+
+.project-card {
+    background-color: var(--light-bg);
+    border-radius: var(--border-radius);
+    box-shadow: var(--box-shadow);
+    overflow: hidden;
+    transition: transform 0.3s ease;
+    border: 1px solid #eee;
+}
+
+.project-card:hover {
+    transform: translateY(-5px);
+    box-shadow: 0 6px 16px rgba(0, 0, 0, 0.15);
+}
+
+.project-card img {
+    width: 100%;
+    height: 200px;
+    object-fit: cover;
+    display: block;
+}
+
+.project-card h4 {
+    font-size: 1.5em;
+    margin: 15px 15px 5px;
+    color: var(--text-color-light);
+}
+
+.project-card p {
+    font-size: 0.95em;
+    margin: 0 15px 15px;
+    color: #666;
+}
+
+.project-tags {
+    margin: 0 15px 15px;
+    display: flex;
+    flex-wrap: wrap;
+    gap: 8px;
+}
+
+.project-tags span {
+    background-color: #e9ecef;
+    color: #495057;
+    padding: 5px 10px;
+    border-radius: 5px;
+    font-size: 0.8em;
+    font-weight: 500;
+}
+
+.project-links {
+    padding: 0 15px 15px;
+    display: flex;
+    gap: 10px;
+    flex-wrap: wrap;
+}
+
+/* Formulário de Contato */
+.contact {
+    text-align: center;
+}
+
+.contact-description {
+    font-size: 1.1em;
+    max-width: 700px;
+    margin: 20px auto 40px;
+    color: var(--text-color-light);
+}
+
+.contact-form {
+    max-width: 600px;
+    margin: 50px auto 0;
+    padding: 30px;
+    background-color: var(--gray-bg);
+    border-radius: var(--border-radius);
+    box-shadow: var(--box-shadow);
+    text-align: left;
+}
+
+.form-group {
+    margin-bottom: 20px;
+}
+
+.form-group label {
+    display: block;
+    margin-bottom: 8px;
+    font-weight: 600;
+    color: var(--text-color-light);
+}
+
+.form-group input[type="text"],
+.form-group input[type="email"],
+.form-group textarea {
+    width: 100%;
+    padding: 12px;
+    border: 1px solid #ddd;
+    border-radius: 5px;
+    font-family: var(--font-secondary);
+    font-size: 1em;
+    color: var(--text-color-light);
+}
+
+.form-group textarea {
+    resize: vertical;
+}
+
+.contact-form button.btn-primary {
+    width: 100%;
+    padding: 15px;
+    font-size: 1.1em;
+}
+
+/* Rodapé */
+.footer {
+    background-color: var(--dark-bg);
+    color: var(--text-color-dark);
+    text-align: center;
+    padding: 40px 20px;
+    font-size: 0.9em;
+}
+
+.footer p {
+    margin-bottom: 15px;
+}
+
+.footer-social-links {
+    margin: 15px 0;
+    font-size: 1.5em;
+}
+
+.footer-social-links a {
+    color: var(--text-color-dark);
+    margin: 0 8px;
+}
+
+.footer-social-links a:hover {
+    color: var(--primary-color);
+}
+
+.footer a {
+    font-size: 0.85em;
+    color: var(--text-color-dark);
+    opacity: 0.8;
+}
+.footer a:hover {
+    color: var(--primary-color);
+    opacity: 1;
+}
+
+
+/* Responsividade */
+@media (max-width: 768px) {
+    .hero {
+        padding: 80px 20px;
+        min-height: auto;
+    }
+    .hero-title {
+        font-size: 3em;
+    }
+    .hero-subtitle {
+        font-size: 1.4em;
+    }
+    .hero-ctas {
+        flex-direction: column;
+        gap: 15px;
+    }
+    .btn {
+        width: 100%;
+    }
+
+    h3 {
+        font-size: 1.8em;
+    }
+
+    .skills-grid, .projects-grid {
+        grid-template-columns: 1fr;
+    }
+
+    .project-card img {
+        height: 180px;
+    }
+
+    .contact-form {
+        margin: 20px auto;
+        padding: 25px;
+    }
+}
+
+@media (max-width: 480px) {
+    .hero-title {
+        font-size: 2.5em;
+    }
+    .hero-subtitle {
+        font-size: 1.2em;
+    }
+    .profile-photo {
+        width: 120px;
+        height: 120px;
+    }
+    .social-links {
+        font-size: 1.5em;
+    }
+    .btn-large {
+        padding: 12px 25px;
+        font-size: 1em;
+    }
+}
